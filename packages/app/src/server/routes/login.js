@@ -14,7 +14,8 @@ module.exports = function(crowi, app) {
 
   const actions = {};
 
-  const loginSuccess = function(req, res, userData) {
+  const
+    loginSuccess = function(req, res, userData) {
     // transforming attributes
     // see User model
     req.user = req.session.user = userData.toObject();
@@ -32,6 +33,7 @@ module.exports = function(crowi, app) {
 
     const { redirectTo } = req.session;
     // remove session.redirectTo
+    debugger
     delete req.session.redirectTo;
     return res.safeRedirect(redirectTo);
   };
@@ -84,6 +86,8 @@ module.exports = function(crowi, app) {
     if (req.user != null) {
       return res.redirect('/');
     }
+
+    console.log('begin')
 
     // config で closed ならさよなら
     if (configManager.getConfig('crowi', 'security:registrationMode') == aclService.labels.SECURITY_REGISTRATION_MODE_CLOSED) {
@@ -140,7 +144,6 @@ module.exports = function(crowi, app) {
           // cz. loginSuccess method doesn't work on it's own when using passport
           //      because `req.login()` prepared by passport is not called.
           req.flash('successMessage', req.t('message.successfully_created',{ username: userData.username }));
-
           return loginSuccess(req, res, userData);
         });
       });

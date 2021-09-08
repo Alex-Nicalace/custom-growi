@@ -72,17 +72,17 @@ function PageEditorModeManager(props) {
             label={t('view')}
           />
         )}
-        {(!isDeviceSmallerThanMd || editorMode === 'view') && (
+        {isAdmin && (!isDeviceSmallerThanMd || editorMode === 'view') && (
           <PageEditorModeButtonWrapper
             editorMode={editorMode}
             isBtnDisabled={isBtnDisabled}
-            onClick={pageEditorModeButtonClickedHandler}
+            onClick={isAdmin && pageEditorModeButtonClickedHandler}
             targetMode="edit"
             icon={<i className="icon-note" />}
             label={t('Edit')}
           />
         )}
-        {(!isDeviceSmallerThanMd || editorMode === 'view') && showHackmdBtn && (
+        {isAdmin && (!isDeviceSmallerThanMd || editorMode === 'view') && showHackmdBtn && (
           <PageEditorModeButtonWrapper
             editorMode={editorMode}
             isBtnDisabled={isBtnDisabled}

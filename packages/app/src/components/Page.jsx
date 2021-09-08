@@ -138,7 +138,6 @@ class Page extends React.Component {
     return (
       <div className={`mb-5 ${isMobile ? 'page-mobile' : ''}`}>
         <RevisionRenderer growiRenderer={this.growiRenderer} markdown={markdown} />
-
         { isLoggedIn && (
           <>
             <GridEditModal ref={this.gridEditModal} />

@@ -24,7 +24,7 @@ import ExpandOrContractButton from './ExpandOrContractButton';
 
 const PageAccessoriesModal = (props) => {
   const {
-    t, pageAccessoriesContainer, onClose, isGuestUser, isSharedUser, isNotFoundPage,
+    t, pageAccessoriesContainer, onClose, isGuestUser, isSharedUser, isNotFoundPage, isAdmin
   } = props;
   const isLinkSharingDisabled = pageAccessoriesContainer.appContainer.config.disableLinkSharing;
   const { switchActiveTab } = pageAccessoriesContainer;
@@ -61,7 +61,7 @@ const PageAccessoriesModal = (props) => {
         Icon: ShareLinkIcon,
         i18n: t('share_links.share_link_management'),
         index: 4,
-        isLinkEnabled: v => !isGuestUser && !isSharedUser && !isNotFoundPage && !isLinkSharingDisabled,
+        isLinkEnabled: v => isAdmin,
       },
     };
   }, [t, isGuestUser, isSharedUser, isNotFoundPage, isLinkSharingDisabled]);

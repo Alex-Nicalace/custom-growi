@@ -635,9 +635,9 @@ module.exports = function(crowi) {
         return callback(err);
       }
 
-      if (userData.status === STATUS_ACTIVE) {
-        userEvent.emit('activated', userData);
-      }
+      // if (userData.status === STATUS_ACTIVE) {
+      //   userEvent.emit('activated', userData);
+      // }
       return callback(err, userData);
     });
   };

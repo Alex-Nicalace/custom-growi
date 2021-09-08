@@ -230,9 +230,12 @@ module.exports = (crowi) => {
       options.grantUserGroupId = grantUserGroupId;
     }
 
-    const createdPage = await createPageAction({
-      path, body, user: req.user, options,
-    });
+    let createdPage = null;
+    if (req.user.admin) {
+      createdPage = await createPageAction({
+        path, body, user: req.user, options,
+      });
+    }
 
     const savedTags = await saveTagsAction({ createdPage, pageTags });
 

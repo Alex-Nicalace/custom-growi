@@ -128,6 +128,7 @@ module.exports = function(crowi, app) {
     const data = {};
     try {
       const users = await userFetcher;
+      console.log(users);
       data.users = users.map((user) => {
         // omit email
         if (user.isEmailPublished !== true) { // compare to 'true' because Crowi original data doesn't have 'isEmailPublished'

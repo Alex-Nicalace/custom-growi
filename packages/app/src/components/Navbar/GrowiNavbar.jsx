@@ -24,15 +24,17 @@ class GrowiNavbar extends React.Component {
     if (currentUser == null) {
       return <li id="login-user" className="nav-item"><a className="nav-link" href="/login">Login</a></li>;
     }
-
+    console.log('button NEW');
+    console.log(currentUser);
     return (
       <>
-        <li className="nav-item d-none d-md-block">
-          <button className="px-md-2 nav-link btn-create-page border-0 bg-transparent" type="button" onClick={navigationContainer.openPageCreateModal}>
+        {currentUser.admin && <li className="nav-item d-none d-md-block">
+          <button className="px-md-2 nav-link btn-create-page border-0 bg-transparent"
+                  type="button" onClick={navigationContainer.openPageCreateModal}>
             <i className="icon-pencil mr-2"></i>
-            <span className="d-none d-lg-block">{ t('New') }</span>
+            <span className="d-none d-lg-block">{t('New')}</span>
           </button>
-        </li>
+        </li>}
 
         <li className="grw-personal-dropdown nav-item dropdown dropdown-toggle dropdown-toggle-no-caret">
           <PersonalDropdown />

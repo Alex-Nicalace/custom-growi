@@ -17,7 +17,7 @@ import { withUnstatedContainers } from './UnstatedUtils';
 
 const PageAccessoriesModalControl = (props) => {
   const {
-    t, pageAccessoriesContainer, isGuestUser, isSharedUser, isNotFoundPage,
+    t, pageAccessoriesContainer, isGuestUser, isSharedUser, isNotFoundPage, isAdmin
   } = props;
   const isLinkSharingDisabled = pageAccessoriesContainer.appContainer.config.disableLinkSharing;
 
@@ -50,7 +50,8 @@ const PageAccessoriesModalControl = (props) => {
       {
         name: 'shareLink',
         Icon: <ShareLinkIcon />,
-        disabled: isGuestUser || isSharedUser || isNotFoundPage || isLinkSharingDisabled,
+        // disabled: isGuestUser || isSharedUser || isNotFoundPage || isLinkSharingDisabled,
+        disabled: !isAdmin,
         i18n: t('share_links.share_link_management'),
       },
     ];

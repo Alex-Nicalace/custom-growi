@@ -10,14 +10,16 @@ import PageAccessoriesContainer from '~/client/services/PageAccessoriesContainer
 
 const PageAccessories = (props) => {
   const { appContainer, pageAccessoriesContainer, isNotFoundPage } = props;
-  const { isGuestUser, isSharedUser } = appContainer;
-
+  const { isGuestUser, isSharedUser, isAdmin } = appContainer;
+  console.log('PageAccessories');
+  console.log(appContainer)
   return (
     <>
       <PageAccessoriesModalControl
         isGuestUser={isGuestUser}
         isSharedUser={isSharedUser}
         isNotFoundPage={isNotFoundPage}
+        isAdmin={isAdmin}
       />
       <PageAccessoriesModal
         isGuestUser={isGuestUser}
@@ -25,6 +27,7 @@ const PageAccessories = (props) => {
         isNotFoundPage={isNotFoundPage}
         isOpen={pageAccessoriesContainer.state.isPageAccessoriesModalShown}
         onClose={pageAccessoriesContainer.closePageAccessoriesModal}
+        isAdmin={isAdmin}
       />
     </>
   );

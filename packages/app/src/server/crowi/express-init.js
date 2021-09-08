@@ -58,6 +58,8 @@ module.exports = function(crowi, app) {
     expectCt: false,
     referrerPolicy: false,
     permittedCrossDomainPolicies: false,
+    frameguard: false,
+    noSniff: false,
   }));
 
   app.use((req, res, next) => {
