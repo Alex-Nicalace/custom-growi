@@ -10,9 +10,9 @@ import { withUnstatedContainers } from './UnstatedUtils';
 const NotAvailableForGuest = (props) => {
   const { appContainer, children } = props;
   const isLoggedin = appContainer.currentUser != null;
-  const isAdmin = appContainer.admin;
+  //const isAdmin = appContainer.admin;
 
-  if (isLoggedin && isAdmin) {
+  if (isLoggedin) {
     return props.children;
   }
 
@@ -28,8 +28,8 @@ const NotAvailableForGuest = (props) => {
   return (
     <>
       { clonedChild }
-      {/*<UncontrolledTooltip placement="top" target={id}>Not available for guest</UncontrolledTooltip>*/}
-      <UncontrolledTooltip placement="top" target={id}>Available only admins</UncontrolledTooltip>
+      <UncontrolledTooltip placement="top" target={id}>Not available for guest</UncontrolledTooltip>
+      {/*<UncontrolledTooltip placement="top" target={id}>Available only admins</UncontrolledTooltip>*/}
     </>
   );
 

@@ -57,6 +57,7 @@ module.exports = function(crowi, app) {
   };
 
   actions.preLogin = function(req, res, next) {
+    debugger;
     // user has already logged in
     const { user } = req;
     if (user != null && user.status === User.STATUS_ACTIVE) {

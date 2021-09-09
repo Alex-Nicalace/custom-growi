@@ -6,7 +6,7 @@ import { UncontrolledTooltip } from 'reactstrap';
 
 const RenderTagLabels = React.memo((props) => {
   const {
-    t, tags, isGuestUser,
+    t, tags, isGuestUser, isAdmin,
   } = props;
 
   function openEditorHandler() {
@@ -36,13 +36,13 @@ const RenderTagLabels = React.memo((props) => {
       {tagElements}
 
       <div id="edit-tags-btn-wrapper-for-tooltip">
-        <a
+        {isAdmin && <a
           className={`btn btn-link btn-edit-tags p-0 text-muted ${isTagsEmpty ? 'no-tags' : ''} ${isGuestUser ? 'disabled' : ''}`}
           onClick={openEditorHandler}
         >
-          { isTagsEmpty && <>{ t('Add tags for this page') }</>}
+          {isTagsEmpty && <>{t('Add tags for this page')}</>}
           <i className="ml-1 icon-plus"></i>
-        </a>
+        </a>}
       </div>
       {isGuestUser && (
         <UncontrolledTooltip placement="top" target="edit-tags-btn-wrapper-for-tooltip" fade={false}>
@@ -60,6 +60,7 @@ RenderTagLabels.propTypes = {
   tags: PropTypes.array,
   openEditorModal: PropTypes.func,
   isGuestUser: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isAdmin,
 };
 
 export default withTranslation()(RenderTagLabels);

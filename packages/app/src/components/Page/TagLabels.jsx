@@ -86,6 +86,7 @@ class TagLabels extends React.Component {
               tags={tags}
               openEditorModal={this.openEditorModal}
               isGuestUser={appContainer.isGuestUser}
+              isAdmin={appContainer.isAdmin}
             />
           </Suspense>
         </form>

@@ -128,7 +128,7 @@ class MyDraftList extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { t, appContainer: {isAdmin} } = this.props;
 
     const draftList = this.generateDraftList(this.state.currentDrafts);
     const totalCount = this.state.totalDrafts;
@@ -144,10 +144,10 @@ class MyDraftList extends React.Component {
             <div className="d-flex justify-content-between mt-2">
               <h4>Total: {totalCount} drafts</h4>
               <div className="align-self-center">
-                <button type="button" className="btn btn-sm btn-outline-danger" onClick={this.clearAllDrafts}>
+                {isAdmin && <button type="button" className="btn btn-sm btn-outline-danger" onClick={this.clearAllDrafts}>
                   <i className="icon-fw icon-fire"></i>
                   {t('delete_all')}
-                </button>
+                </button>}
               </div>
             </div>
 

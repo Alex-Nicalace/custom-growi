@@ -221,10 +221,11 @@ const PageManagement = (props) => {
     );
   }
 
-
   return (
     <>
-      {currentUser == null ? renderDotsIconForGuestUser() : renderDotsIconForCurrentUser()}
+      {currentUser == null
+        ? renderDotsIconForGuestUser()
+        : currentUser.admin && renderDotsIconForCurrentUser()}
       <div className="dropdown-menu dropdown-menu-right">
         {isTopPagePath ? renderDropdownItemForTopPage() : renderDropdownItemForNotTopPage()}
         <button className="dropdown-item" type="button" onClick={openPageTemplateModalHandler}>

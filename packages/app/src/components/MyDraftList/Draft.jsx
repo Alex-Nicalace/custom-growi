@@ -157,6 +157,7 @@ class Draft extends React.Component {
 
   render() {
     const { isPanelExpanded } = this.state;
+    const { appContainer: {isAdmin} } = this.props;
 
     return (
       <div className="accordion draft-list-item" role="tablist">
@@ -167,7 +168,7 @@ class Draft extends React.Component {
 
             <div className="flex-grow-1"></div>
 
-            {this.renderControls()}
+            {isAdmin && this.renderControls()}
           </div>
 
           <Collapse isOpen={isPanelExpanded} onEntering={this.expandPanelHandler} onExiting={this.collapsePanelHandler}>
