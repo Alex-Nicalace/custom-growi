@@ -5,7 +5,7 @@ import { UncontrolledTooltip } from 'reactstrap';
 
 
 const NotFoundAlert = (props) => {
-  const { t, isHidden, isGuestUserMode } = props;
+  const { t, isHidden, isGuestUserMode, isAdmin } = props;
   function clickHandler(viewType) {
 
     // check guest user,
@@ -37,7 +37,9 @@ const NotFoundAlert = (props) => {
         <div id="create-page-btn-wrapper-for-tooltip" className="d-inline-block">
           <button
             type="button"
-            className={`pl-3 pr-3 btn bg-info text-white ${isGuestUserMode ? 'disabled' : ''}`}
+            //className={`pl-3 pr-3 btn bg-info text-white ${isGuestUserMode ? 'disabled' : ''}`}
+            className={`pl-3 pr-3 btn bg-info text-white ${!isAdmin ? 'disabled' : ''}`}
+            disabled={!isAdmin}
             onClick={() => { clickHandler('edit') }}
           >
             <i className="icon-note icon-fw" />
@@ -57,11 +59,11 @@ const NotFoundAlert = (props) => {
 };
 
 
-NotFoundAlert.propTypes = {
-  t: PropTypes.func.isRequired, // i18next
-  onPageCreateClicked: PropTypes.func,
-  isHidden: PropTypes.bool.isRequired,
-  isGuestUserMode: PropTypes.bool.isRequired,
-};
+// NotFoundAlert.propTypes = {
+//   t: PropTypes.func.isRequired, // i18next
+//   onPageCreateClicked: PropTypes.func,
+//   isHidden: PropTypes.bool.isRequired,
+//   isGuestUserMode: PropTypes.bool.isRequired,
+// };
 
 export default withTranslation()(NotFoundAlert);

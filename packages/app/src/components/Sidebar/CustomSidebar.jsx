@@ -25,7 +25,7 @@ const SidebarNotFound = () => {
 const CustomSidebar = (props) => {
 
   const { appContainer } = props;
-  const { apiGet } = appContainer;
+  const { apiGet, isAdmin } = appContainer;
 
   const [isMounted, setMounted] = useState(false);
   const [markdown, setMarkdown] = useState();
@@ -59,13 +59,13 @@ const CustomSidebar = (props) => {
       <div className="grw-sidebar-content-header p-3 d-flex">
         <h3 className="mb-0">
           Custom Sidebar
-          <a className="h6 ml-2" href="/Sidebar"><i className="icon-pencil"></i></a>
+          {isAdmin && <a className="h6 ml-2" href="/Sidebar"><i className="icon-pencil"></i></a>}
         </h3>
         <button type="button" className="btn btn-sm btn-outline-secondary ml-auto" onClick={fetchDataAndRenderHtml}>
           <i className="icon icon-reload"></i>
         </button>
       </div>
-      { isMounted && markdown == null && <SidebarNotFound /> }
+      { isMounted && markdown == null && isAdmin && <SidebarNotFound /> }
       {/* eslint-disable-next-line react/no-danger */}
       { markdown != null && (
         <div className="p-3">
